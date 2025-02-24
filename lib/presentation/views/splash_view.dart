@@ -1,13 +1,11 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
+import 'package:jannah_journal/core/constants/app_colors.dart';
 import 'package:jannah_journal/core/constants/app_strings.dart';
-import 'package:jannah_journal/core/routes/app_routes.dart';
-import 'package:jannah_journal/core/routes/routes_name.dart';
-import 'package:jannah_journal/core/theme/theme_extension.dart';
-import 'package:jannah_journal/core/utils/screen_utils.dart';
 
+import '../../core/routes/routes_name.dart';
 import '../styles/app_font_style.dart';
-import '../styles/decorations/scaffold_cont_decoration.dart';
+import '../styles/decorations/scaffold_background_painter.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key});
@@ -19,7 +17,6 @@ class SplashView extends StatefulWidget {
 class _SplashViewState extends State<SplashView> {
   @override
   void initState() {
-    // TODO: implement initState
     moveToNextScreen();
     super.initState();
   }
@@ -27,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
   //Navigation
   moveToNextScreen() {
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.of(context).pushNamed(RoutesName.signInView);
+    Navigator.of(context).pushNamed(RoutesName.signInView);
       debugPrint("Moved to Sign-in View");
     });
   }
@@ -35,16 +32,21 @@ class _SplashViewState extends State<SplashView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: ScreenUtils.screenHeight(context),
-        width: ScreenUtils.screenWidth(context),
-        decoration: boxDecoration(context),
-        child: Center(
-          child: Text(
-            AppStrings.splashViewText,
-            style: AppFontStyle.largeTextStyle,
+      backgroundColor: AppColors.kGrey7D7C88Color,
+      body: Stack(
+        children: [
+          // Top blurred shape
+           ScaffoldBackGroundPainter.topBlurredShape(),
+
+          // Bottom blurred shape
+          ScaffoldBackGroundPainter.bottomBlurredShape(),
+          Center(
+            child: Text(
+              AppStrings.splashViewText,
+              style: AppFontStyle.largeTextStyle,
+            ),
           ),
-        ),
+      ],
       ),
     );
   }

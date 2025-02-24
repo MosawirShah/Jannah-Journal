@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:jannah_journal/core/routes/app_routes.dart';
-import 'package:jannah_journal/core/routes/routes_name.dart';
-import 'package:jannah_journal/core/theme/app_theme.dart';
+import 'package:jannah_journal/presentation/view_models/auth_view_model.dart';
+import 'package:provider/provider.dart';
+
+import 'app/app_settings.dart';
 
 void main(){
   runApp(const JannahJournalApp());
@@ -12,12 +13,10 @@ class JannahJournalApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      //initialRoute: ,
-      theme: AppTheme.appLightTheme,
-      initialRoute: RoutesName.splashView,
-      routes: AppRoutes.appRoutes(context),
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_)=> AuthViewModel()),
+        ],
+        child: AppSettings());
   }
 }

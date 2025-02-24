@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppColors{
 
   //background colors of the screens
-  static const kGreyC7D7C8Color = Color(0xFF7D7C88);
+  static const kGrey7D7C88Color = Color(0xFF7D7C88);
   static const kWhiteD9D9D9Color = Color(0xFFD9D9D9); //background: #D9D9D9;
 
   //Splashscreen text color
