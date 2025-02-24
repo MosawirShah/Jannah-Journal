@@ -11,7 +11,7 @@ class AppSettings extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       //initialRoute: ,
       //theme: AppTheme.appLightTheme,
-      initialRoute: RoutesName.splashView,
+      initialRoute: RoutesName.homeView,
       routes: AppRoutes.appRoutes(context),
     );
   }

@@ -155,6 +155,7 @@ class SignInView extends StatelessWidget {
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
                           debugPrint("Sign in");
+                          Navigator.of(context).pushNamed(RoutesName.homeView);
                           _emailController.clear();
                           _passwordController.clear();
                         }

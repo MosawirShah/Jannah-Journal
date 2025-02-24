@@ -23,8 +23,6 @@ class AppFontStyle {
     color: AppColors.kWhiteColor,fontWeight: FontWeight.bold,fontSize: 20,
   );
 
-  // //Custom Line Container TextStyle
-  // static TextStyle customLineContainerTextStyle = GoogleFonts.nunito(
-  //   color: AppColors.kBlackColor,fontWeight: FontWeight.w500,fontSize: 22,
-  // );
+  static TextStyle fontStyleInterSmallSize = GoogleFonts.inter(fontSize: 16,fontWeight: FontWeight.bold
+  );
 }

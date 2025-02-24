@@ -15,4 +15,7 @@ class AppStrings {
   static const String signUpSubtitleText = "First create your account";
   static const String signUpButtonText = "SIGN UP";
   static const String alreadyHaveAccText = "Already have account?";
+
+  //Home view Text
+  static const String homeCustomButtonText = "Dear Diary";
 }

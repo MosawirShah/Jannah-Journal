@@ -25,4 +25,8 @@ class AppColors{
  //Forgot password color
  static const kBrownD87234Color = Color(0xFFD87234);     //background: #D87234;
 
+ //home subtitle font color
+ static const kGrey909090Color = Color(0xFF909090);
+
+
 }
