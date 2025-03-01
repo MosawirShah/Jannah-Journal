@@ -28,116 +28,119 @@ class _HomeViewState extends State<HomeView> {
 
     double screenHeight = ScreenUtils.screenHeight(context);
     double screenWidth = ScreenUtils.screenWidth(context);
-    return Scaffold(
-      backgroundColor: AppColors.kGrey7D7C88Color,
-      resizeToAvoidBottomInset: false, // Prevents body from shifting
-      appBar: CustomAppBar(
-        appBarTitle: AppStrings.homeAppBarText,
-        leadingIconWidget: _leadingIconWidget(screenWidth: screenWidth),
-        screenHeight: screenHeight,
-        screenWidth: screenWidth,
-        actionAppBar: [
-          Padding(
-            padding:  EdgeInsets.only(right: screenWidth * 0.05),
-            child: InkWell(
-              onTap: (){
-                Navigator.pushNamed(context, RoutesName.settingsView);
-              },
-                child: SvgPicture.asset(AppImagesURL.settingIcon,height: screenHeight * 0.03,)),
-          ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          //top
-          ScaffoldBackGroundPainter.topBlurredShape(),
-          //bottom,
-          ScaffoldBackGroundPainter.bottomBlurredShape(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: AppColors.kGrey7D7C88Color,
+        resizeToAvoidBottomInset: false, // Prevents body from shifting
+        appBar: CustomAppBar(
+          appBarTitle: AppStrings.homeAppBarText,
+          leadingIconWidget: _leadingIconWidget(screenWidth: screenWidth),
+          screenHeight: screenHeight,
+          screenWidth: screenWidth,
+          actionAppBar: [
+            Padding(
+              padding:  EdgeInsets.only(right: screenWidth * 0.05),
+              child: InkWell(
+                onTap: (){
+                  Navigator.pushNamed(context, RoutesName.settingsView);
+                },
+                  child: SvgPicture.asset(AppImagesURL.settingIcon,height: screenHeight * 0.03,)),
+            ),
+          ],
+        ),
+        body: Stack(
+          children: [
+            //top
+            ScaffoldBackGroundPainter.topBlurredShape(),
+            //bottom,
+            ScaffoldBackGroundPainter.bottomBlurredShape(),
 
-          //Home View body Content
-          SizedBox(
-            height: screenHeight * 0.83,
-            width: screenWidth ,
-            //   color: Colors.greenAccent,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: screenHeight * 0.0,
-                    horizontal: screenWidth * 0.03),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: screenHeight * 0.00,
-                          horizontal: screenWidth * 0.0),
-                      child: Text("February 24, 2025",
-                          style: AppFontStyle.appTitleFontStyle),
-                    ),
+            //Home View body Content
+            SizedBox(
+              height: screenHeight * 0.83,
+              width: screenWidth ,
+              //   color: Colors.greenAccent,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: screenHeight * 0.0,
+                      horizontal: screenWidth * 0.03),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: screenHeight * 0.00,
+                            horizontal: screenWidth * 0.0),
+                        child: Text("February 24, 2025",
+                            style: AppFontStyle.appTitleFontStyle),
+                      ),
 
-                    //spacer
-                    SizedBox(
-                      height: screenHeight * 0.03,
-                    ),
+                      //spacer
+                      SizedBox(
+                        height: screenHeight * 0.03,
+                      ),
 
-                    //Dear Diary Button
-                    CustomCommonButton(
-                      onTap: (){
-                        Navigator.of(context).pushNamed(RoutesName.dearDiaryView);
-                      },
-                        buttonTitle: AppStrings.homeCustomButtonText,
-                        buttonHeight: screenHeight * 0.06,
-                        buttonWidth: screenWidth),
+                      //Dear Diary Button
+                      CustomCommonButton(
+                        onTap: (){
+                          Navigator.of(context).pushNamed(RoutesName.dearDiaryView);
+                        },
+                          buttonTitle: AppStrings.homeCustomButtonText,
+                          buttonHeight: screenHeight * 0.06,
+                          buttonWidth: screenWidth),
 
-                    //spacer
-                    SizedBox(
-                      height: screenHeight * 0.035,
-                    ),
+                      //spacer
+                      SizedBox(
+                        height: screenHeight * 0.035,
+                      ),
 
-                    //First Card Widget
-                    HomeCard(
-                      title: "Just booked that vacation!",
-                      subtitle: "10:30 PM",
-                      leadingImagePath: 'assets/images/emoji.png',
-                      descriptionText:
-                          "I finally  booked my vacation, and I can already feel the excitement of all the new adventures I will be having.",
-                    ),
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.01,
-                    ),
-                    //2nd Card
-                    HomeCard(
-                      title: "Movie night",
-                      subtitle: "07:00 PM",
-                      leadingImagePath: 'assets/images/movie_image.png',
-                      descriptionText:
-                          "I had an amazing movie night with my sisters, we actually don’t do this enough...",
-                    ),
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.01,
-                    ),
-                    //3rd Card
-                    HomeCard(
-                      title: "Breakfast",
-                      subtitle: "08:00 AM",
-                      leadingImagePath: 'assets/images/breakfast.png',
-                      descriptionText:
-                          "I had an amazing movie night with my sisters, we actually don’t do this enough...",
-                    ),
-                  ],
+                      //First Card Widget
+                      HomeCard(
+                        title: "Just booked that vacation!",
+                        subtitle: "10:30 PM",
+                        leadingImagePath: 'assets/images/emoji.png',
+                        descriptionText:
+                            "I finally  booked my vacation, and I can already feel the excitement of all the new adventures I will be having.",
+                      ),
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.01,
+                      ),
+                      //2nd Card
+                      HomeCard(
+                        title: "Movie night",
+                        subtitle: "07:00 PM",
+                        leadingImagePath: 'assets/images/movie_image.png',
+                        descriptionText:
+                            "I had an amazing movie night with my sisters, we actually don’t do this enough...",
+                      ),
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.01,
+                      ),
+                      //3rd Card
+                      HomeCard(
+                        title: "Breakfast",
+                        subtitle: "08:00 AM",
+                        leadingImagePath: 'assets/images/breakfast.png',
+                        descriptionText:
+                            "I had an amazing movie night with my sisters, we actually don’t do this enough...",
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-          ///BOTTOM NAVIGATION BAR
-          BottomNavWidget(),
-        ],
+            ///BOTTOM NAVIGATION BAR
+            BottomNavWidget(),
+          ],
+        ),
+
+
       ),
-
-
     );
   }
 

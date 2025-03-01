@@ -18,202 +18,205 @@ class SettingsView extends StatelessWidget {
     double screenHeight = ScreenUtils.screenHeight(context);
     double screenWidth = ScreenUtils.screenWidth(context);
     final notificationProvider = Provider.of<SettingsViewModel>(context);
-    return Scaffold(
-      backgroundColor: AppColors.kGrey7D7C88Color,
-      appBar: CustomAppBar(
-        appBarTitle: "Settings",
-        leadingIconWidget: Image.asset(AppImagesURL.arrowBackImage),
-        screenHeight: screenHeight,
-        screenWidth: screenWidth,
-        actionAppBar: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: InkWell(child: SvgPicture.asset(AppImagesURL.settingIcon, height: screenHeight * 0.03,)),
-          ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          //top
-          ScaffoldBackGroundPainter.topBlurredShape(),
-          //bottom,
-          ScaffoldBackGroundPainter.bottomBlurredShape(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: AppColors.kGrey7D7C88Color,
+        appBar: CustomAppBar(
+          appBarTitle: "Settings",
+          leadingIconWidget: Image.asset(AppImagesURL.arrowBackImage),
+          screenHeight: screenHeight,
+          screenWidth: screenWidth,
+          actionAppBar: [
+            Padding(
+              padding: const EdgeInsets.only(right: 15.0),
+              child: InkWell(child: SvgPicture.asset(AppImagesURL.settingIcon, height: screenHeight * 0.03,)),
+            ),
+          ],
+        ),
+        body: Stack(
+          children: [
+            //top
+            ScaffoldBackGroundPainter.topBlurredShape(),
+            //bottom,
+            ScaffoldBackGroundPainter.bottomBlurredShape(),
 
-          //Home View body Content
-          SizedBox(
-            height: screenHeight * 0.83,
-            width: screenWidth,
-            //   color: Colors.greenAccent,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  //spacer
-                  SizedBox(
-                    height: screenHeight * 0.01,
-                  ),
+            //Home View body Content
+            SizedBox(
+              height: screenHeight * 0.83,
+              width: screenWidth,
+              //   color: Colors.greenAccent,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    //spacer
+                    SizedBox(
+                      height: screenHeight * 0.01,
+                    ),
 
-                  //First Card Widget
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: screenWidth * 0.04, right: screenWidth * 0.04),
-                    child: Card(
-                      color: AppColors.kBlack202020Color,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          //Spacer
-                          SizedBox(
-                            height: screenHeight * 0.02,
-                          ),
-                          //Title
-                          Padding(
-                            padding: EdgeInsets.only(
-                                top: screenHeight * 0.015,
-                                left: screenWidth * 0.02),
-                            child: Row(
-                              children: [
-                                CircleAvatar(
-                                  radius: 25,
-                                  backgroundColor: AppColors.kBlackColor,
-                                  child: Image.asset(AppImagesURL.hijabImage),
-                                ),
-                                //spacer
-                                SizedBox(
-                                  width: screenWidth * 0.03,
-                                ),
-                                Text("Fatima Bint Muhammad",
-                                    style: AppFontStyle.rubikFontStyle),
-                              ],
+                    //First Card Widget
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: screenWidth * 0.04, right: screenWidth * 0.04),
+                      child: Card(
+                        color: AppColors.kBlack202020Color,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            //Spacer
+                            SizedBox(
+                              height: screenHeight * 0.02,
                             ),
-                          ),
-                          //spacer
-                          SizedBox(
-                            height: screenHeight * 0.007,
-                          ),
-                          Divider(),
-                          //Spacer
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: screenHeight * 0.005,
-                              left: screenWidth * 0.033,
-                            ),
-                            child: Text(
-                              "Account Settings",
-                              style: AppFontStyle.rubikFontStyle.copyWith(
-                                fontSize: 18,
-                                color: AppColors.kGreyADADADColor,
+                            //Title
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  top: screenHeight * 0.015,
+                                  left: screenWidth * 0.02),
+                              child: Row(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 25,
+                                    backgroundColor: AppColors.kBlackColor,
+                                    child: Image.asset(AppImagesURL.hijabImage),
+                                  ),
+                                  //spacer
+                                  SizedBox(
+                                    width: screenWidth * 0.03,
+                                  ),
+                                  Text("Fatima Bint Muhammad",
+                                      style: AppFontStyle.rubikFontStyle),
+                                ],
                               ),
                             ),
-                          ),
-                          //spacer
-                          SizedBox(
-                            height: screenHeight * 0.005,
-                          ),
-                          ReusableListTile(
-                            title: "Account",
-                            screenHeight: screenHeight,
-                            onTap: () {},
-                            buttonIcon: Image.asset(
-                              AppImagesURL.arrowForwardImage,
-                              color: AppColors.kWhiteColor,
-                              height: screenHeight * 0.023,
+                            //spacer
+                            SizedBox(
+                              height: screenHeight * 0.007,
                             ),
-                          ),
-                          ReusableListTile(
-                            title: "Change password",
-                            screenHeight: screenHeight,
-                            onTap: () {},
-                            buttonIcon: Image.asset(
-                              AppImagesURL.arrowForwardImage,
-                              color: AppColors.kWhiteColor,
-                              height: screenHeight * 0.023,
+                            Divider(),
+                            //Spacer
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: screenHeight * 0.005,
+                                left: screenWidth * 0.033,
+                              ),
+                              child: Text(
+                                "Account Settings",
+                                style: AppFontStyle.rubikFontStyle.copyWith(
+                                  fontSize: 18,
+                                  color: AppColors.kGreyADADADColor,
+                                ),
+                              ),
                             ),
-                          ),
-                          ReusableListTile(
-                            title: "Add a payment method",
-                            screenHeight: screenHeight,
-                            onTap: () {},
-                            buttonIcon: Icon(Icons.add,size: 23,color: AppColors.kWhiteColor,),
-                          ),
-                         ///PUSH Notification Button
-                        ListTile(
-                          title: Text(
-                            "Push notifications",
-                            style: AppFontStyle.rubikFontStyle,
-                          ),
-                          trailing: Switch(
-                            // This bool value toggles the switch.
-                            value: notificationProvider.notificationValue,
-                            inactiveThumbColor: AppColors.kBlackColor,
-                            inactiveTrackColor: AppColors.kGrey2F2F2FColor,
-                            activeTrackColor: AppColors.kGrey2F2F2FColor,
-                            onChanged: (bool value) {
-                              // This is called when the user toggles the switch.
-                                 notificationProvider.setNotificationValue(value);
+                            //spacer
+                            SizedBox(
+                              height: screenHeight * 0.005,
+                            ),
+                            ReusableListTile(
+                              title: "Account",
+                              screenHeight: screenHeight,
+                              onTap: () {},
+                              buttonIcon: Image.asset(
+                                AppImagesURL.arrowForwardImage,
+                                color: AppColors.kWhiteColor,
+                                height: screenHeight * 0.023,
+                              ),
+                            ),
+                            ReusableListTile(
+                              title: "Change password",
+                              screenHeight: screenHeight,
+                              onTap: () {},
+                              buttonIcon: Image.asset(
+                                AppImagesURL.arrowForwardImage,
+                                color: AppColors.kWhiteColor,
+                                height: screenHeight * 0.023,
+                              ),
+                            ),
+                            ReusableListTile(
+                              title: "Add a payment method",
+                              screenHeight: screenHeight,
+                              onTap: () {},
+                              buttonIcon: Icon(Icons.add,size: 23,color: AppColors.kWhiteColor,),
+                            ),
+                           ///PUSH Notification Button
+                          ListTile(
+                            title: Text(
+                              "Push notifications",
+                              style: AppFontStyle.rubikFontStyle,
+                            ),
+                            trailing: Switch(
+                              // This bool value toggles the switch.
+                              value: notificationProvider.notificationValue,
+                              inactiveThumbColor: AppColors.kBlackColor,
+                              inactiveTrackColor: AppColors.kGrey2F2F2FColor,
+                              activeTrackColor: AppColors.kGrey2F2F2FColor,
+                              onChanged: (bool value) {
+                                // This is called when the user toggles the switch.
+                                   notificationProvider.setNotificationValue(value);
 
-                            },
-                          )
+                              },
+                            )
+                          ),
+                            Divider(),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                top: screenHeight * 0.005,
+                                left: screenWidth * 0.033,
+                              ),
+                              child: Text(
+                                "More",
+                                style: AppFontStyle.rubikFontStyle.copyWith(
+                                  fontSize: 18,
+                                  color: AppColors.kGreyADADADColor,
+                                ),
+                              ),
+                            ),
+                            ReusableListTile(
+                              title: "About us",
+                              screenHeight: screenHeight,
+                              onTap: () {},
+                              buttonIcon: Image.asset(
+                                AppImagesURL.arrowForwardImage,
+                                color: AppColors.kWhiteColor,
+                                height: screenHeight * 0.023,
+                              ),
+                            ),
+                            ReusableListTile(
+                              title: "Privacy policy",
+                              screenHeight: screenHeight,
+                              onTap: () {},
+                              buttonIcon: Image.asset(
+                                AppImagesURL.arrowForwardImage,
+                                color: AppColors.kWhiteColor,
+                                height: screenHeight * 0.023,
+                              ),
+                            ),
+                            ReusableListTile(
+                              title: "Terms and Conditions",
+                              screenHeight: screenHeight,
+                              onTap: () {},
+                              buttonIcon: Image.asset(
+                                AppImagesURL.arrowForwardImage,
+                                color: AppColors.kWhiteColor,
+                                height: screenHeight * 0.023,
+                              ),
+                            ),
+                            SizedBox(height: screenHeight * 0.02,)
+                          ],
                         ),
-                          Divider(),
-                          Padding(
-                            padding: EdgeInsets.only(
-                              top: screenHeight * 0.005,
-                              left: screenWidth * 0.033,
-                            ),
-                            child: Text(
-                              "More",
-                              style: AppFontStyle.rubikFontStyle.copyWith(
-                                fontSize: 18,
-                                color: AppColors.kGreyADADADColor,
-                              ),
-                            ),
-                          ),
-                          ReusableListTile(
-                            title: "About us",
-                            screenHeight: screenHeight,
-                            onTap: () {},
-                            buttonIcon: Image.asset(
-                              AppImagesURL.arrowForwardImage,
-                              color: AppColors.kWhiteColor,
-                              height: screenHeight * 0.023,
-                            ),
-                          ),
-                          ReusableListTile(
-                            title: "Privacy policy",
-                            screenHeight: screenHeight,
-                            onTap: () {},
-                            buttonIcon: Image.asset(
-                              AppImagesURL.arrowForwardImage,
-                              color: AppColors.kWhiteColor,
-                              height: screenHeight * 0.023,
-                            ),
-                          ),
-                          ReusableListTile(
-                            title: "Terms and Conditions",
-                            screenHeight: screenHeight,
-                            onTap: () {},
-                            buttonIcon: Image.asset(
-                              AppImagesURL.arrowForwardImage,
-                              color: AppColors.kWhiteColor,
-                              height: screenHeight * 0.023,
-                            ),
-                          ),
-                          SizedBox(height: screenHeight * 0.02,)
-                        ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
 
-          ///B0ttom Navigation Bar
-          BottomNavWidget(),
-        ],
+            ///B0ttom Navigation Bar
+            BottomNavWidget(),
+          ],
+        ),
       ),
     );
   }

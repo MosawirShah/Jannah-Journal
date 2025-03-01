@@ -26,254 +26,257 @@ class SignInView extends StatelessWidget {
     final authProvider = Provider.of<AuthViewModel>(context);
     double screenHeight = ScreenUtils.screenHeight(context);
     double screenWidth = ScreenUtils.screenWidth(context);
-    return Scaffold(
-      backgroundColor: Color(0xFF817D88),
-      body: Stack(
-        children: [
-          // Top blurred shape
-          ScaffoldBackGroundPainter.topBlurredShape(),
-          // Bottom blurred shape
-          ScaffoldBackGroundPainter.bottomBlurredShape(),
-          //Form
-          SizedBox(
-            height: screenHeight,
-            width: screenWidth,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: Color(0xFF817D88),
+        body: Stack(
+          children: [
+            // Top blurred shape
+            ScaffoldBackGroundPainter.topBlurredShape(),
+            // Bottom blurred shape
+            ScaffoldBackGroundPainter.bottomBlurredShape(),
+            //Form
+            SizedBox(
+              height: screenHeight,
+              width: screenWidth,
 
-            child: SingleChildScrollView(
-              child: Form(
-                key: _formKey,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.15,
-                    ),
-                    //Title text of Sign View
-                    Text(AppStrings.signInTitleText,
-                        style: AppFontStyle.authTitleTextStyle),
-
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.03,
-                    ),
-
-                    //Subtitle of sign in View
-                    Text(AppStrings.enterEmailAndPassText,
-                        style: AppFontStyle.authSubTitleTextStyle),
-
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.04,
-                    ),
-
-                    //TextFormField for Email
-                    SizedBox(
-                      width: screenWidth * 0.87,
-                      child: TextFormField(
-                        controller: _emailController,
-                        style: AppFontStyle.authSubTitleTextStyle,
-                        decoration: InputDecoration(
-                            hintText: "Email",
-                            hintStyle: AppFontStyle.authSubTitleTextStyle
-                                .copyWith(color: AppColors.kGreyA8A6A7Color),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: AppColors.kGreyA8A6A7Color),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.kGreyA8A6A7Color))),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Please enter your email";
-                          } else if (!RegExp(
-                                  r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
-                              .hasMatch(value)) {
-                            return "Enter a valid email";
-                          }
-                          return null;
-                        },
+              child: SingleChildScrollView(
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.15,
                       ),
-                    ),
+                      //Title text of Sign View
+                      Text(AppStrings.signInTitleText,
+                          style: AppFontStyle.authTitleTextStyle),
 
-                    //TextFormField for Password
-                    SizedBox(
-                      width: screenWidth * 0.87,
-                      child: TextFormField(
-                        controller: _passwordController,
-                        obscureText: authProvider.passwordObsecureText,
-                        style: AppFontStyle.authSubTitleTextStyle,
-                        decoration: InputDecoration(
-                            suffixIcon: IconButton(onPressed: (){
-                             authProvider.setPasswordObsecureText(!authProvider.passwordObsecureText);
-                            }, icon: Icon(authProvider.passwordObsecureText == true ? Icons.visibility_off : Icons.visibility,color:AppColors.kBrownD87234Color,)),
-                            hintText: "Password",
-                            hintStyle: AppFontStyle.authSubTitleTextStyle
-                                .copyWith(color: AppColors.kGreyA8A6A7Color),
-                            enabledBorder: UnderlineInputBorder(
-                              borderSide: BorderSide(color: AppColors.kGreyA8A6A7Color),
-                            ),
-                            focusedBorder: UnderlineInputBorder(
-                                borderSide: BorderSide(color: AppColors.kGreyA8A6A7Color))),
-                        validator: (value) {
-                          if (value == null || value.isEmpty) {
-                            return "Password cannot be empty";
-                          } else if (value.length < 6) {
-                            return "Password must be at least 6 characters";
-                          }
-                          return null;
-                        },
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.03,
                       ),
-                    ),
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.0,
-                    ),
 
-                    //Forgot password
-                    Align(
-                      alignment: Alignment.centerRight,
-                      child: Container(
-                        margin: EdgeInsets.only(right: 0.0),
-                        child: TextButton(
-                            onPressed: () {
-                              debugPrint("Forgot password button Pressed");
-                            },
-                            child: Text(
-                              AppStrings.forgotPasswordText,
-                              textAlign: TextAlign.right,
-                              style: AppFontStyle.authSubTitleTextStyle.copyWith(
-                                  color: AppColors.kBrownD87234Color,
-                                  fontWeight: FontWeight.bold,),
-                            )),
+                      //Subtitle of sign in View
+                      Text(AppStrings.enterEmailAndPassText,
+                          style: AppFontStyle.authSubTitleTextStyle),
+
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.04,
                       ),
-                    ),
 
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.03,
-                    ),
+                      //TextFormField for Email
+                      SizedBox(
+                        width: screenWidth * 0.87,
+                        child: TextFormField(
+                          controller: _emailController,
+                          style: AppFontStyle.authSubTitleTextStyle,
+                          decoration: InputDecoration(
+                              hintText: "Email",
+                              hintStyle: AppFontStyle.authSubTitleTextStyle
+                                  .copyWith(color: AppColors.kGreyA8A6A7Color),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.kGreyA8A6A7Color),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: AppColors.kGreyA8A6A7Color))),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Please enter your email";
+                            } else if (!RegExp(
+                                    r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$')
+                                .hasMatch(value)) {
+                              return "Enter a valid email";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
 
-                    //Sign In Button
-                    CustomButton(
-                      titleText: AppStrings.loginButtonText,
-                      onTap: () {
-                        if (_formKey.currentState!.validate()) {
-                          debugPrint("Sign in");
-                          Navigator.of(context).pushNamed(RoutesName.homeView);
-                          _emailController.clear();
-                          _passwordController.clear();
-                        }
-                      },
-                    ),
+                      //TextFormField for Password
+                      SizedBox(
+                        width: screenWidth * 0.87,
+                        child: TextFormField(
+                          controller: _passwordController,
+                          obscureText: authProvider.passwordObsecureText,
+                          style: AppFontStyle.authSubTitleTextStyle,
+                          decoration: InputDecoration(
+                              suffixIcon: IconButton(onPressed: (){
+                               authProvider.setPasswordObsecureText(!authProvider.passwordObsecureText);
+                              }, icon: Icon(authProvider.passwordObsecureText == true ? Icons.visibility_off : Icons.visibility,color:AppColors.kBrownD87234Color,)),
+                              hintText: "Password",
+                              hintStyle: AppFontStyle.authSubTitleTextStyle
+                                  .copyWith(color: AppColors.kGreyA8A6A7Color),
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(color: AppColors.kGreyA8A6A7Color),
+                              ),
+                              focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: AppColors.kGreyA8A6A7Color))),
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Password cannot be empty";
+                            } else if (value.length < 6) {
+                              return "Password must be at least 6 characters";
+                            }
+                            return null;
+                          },
+                        ),
+                      ),
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.0,
+                      ),
 
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.013,
-                    ),
+                      //Forgot password
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: Container(
+                          margin: EdgeInsets.only(right: 0.0),
+                          child: TextButton(
+                              onPressed: () {
+                                debugPrint("Forgot password button Pressed");
+                              },
+                              child: Text(
+                                AppStrings.forgotPasswordText,
+                                textAlign: TextAlign.right,
+                                style: AppFontStyle.authSubTitleTextStyle.copyWith(
+                                    color: AppColors.kBrownD87234Color,
+                                    fontWeight: FontWeight.bold,),
+                              )),
+                        ),
+                      ),
 
-                    //Don't have account widget
-                    RichTextWidget(
-                        normalText: AppStrings.dontHaveAccountText,
-                        clickableText: AppStrings.signUpTitleText,
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.03,
+                      ),
+
+                      //Sign In Button
+                      CustomButton(
+                        titleText: AppStrings.loginButtonText,
                         onTap: () {
-                          debugPrint("Sign Up button Pressed");
-                          Navigator.of(context).pushNamed(RoutesName.signUpView);
-                        }),
+                          if (_formKey.currentState!.validate()) {
+                            debugPrint("Sign in");
+                            Navigator.of(context).pushNamed(RoutesName.homeView);
+                            _emailController.clear();
+                            _passwordController.clear();
+                          }
+                        },
+                      ),
 
-                    //spacer
-                    SizedBox(
-                      height: screenHeight * 0.05,
-                    ),
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.013,
+                      ),
 
-                    //Other Methods of SIGN-IN
-                    SizedBox(
-                      height: screenHeight * 0.3,
-                      child: Column(
-                        children: [
-                          Row(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              //Line container
-                              CustomLineContainer(lineWidth: screenWidth  * 0.35,),// ScreenUtils.screenWidth(context),
-                              //Spacer in row
-                              SizedBox(
-                                width: screenWidth * 0.02,
-                              ),
+                      //Don't have account widget
+                      RichTextWidget(
+                          normalText: AppStrings.dontHaveAccountText,
+                          clickableText: AppStrings.signUpTitleText,
+                          onTap: () {
+                            debugPrint("Sign Up button Pressed");
+                            Navigator.of(context).pushNamed(RoutesName.signUpView);
+                          }),
 
-                              //"Sign In with" Text widget
-                              Text(
-                                AppStrings.signInWithText,
-                                style: AppFontStyle.authSubTitleTextStyle
-                                    .copyWith(color: AppColors.kBlackColor),
-                              ),
+                      //spacer
+                      SizedBox(
+                        height: screenHeight * 0.05,
+                      ),
 
-                              //Spacer in row
-                              SizedBox(
-                                width: screenWidth * 0.02,
-                              ),
-
-                              //Line container
-                              CustomLineContainer(lineWidth: screenWidth  * 0.35,),
-                            ],
-                          ),
-                          //Spacer
-                          SizedBox(
-                            height: screenHeight * 0.03,
-                          ),
-
-                          //Social authentication
-                          SizedBox(
-                            height: screenHeight * 0.1,
-                            width: screenWidth,
-                            child: Row(
+                      //Other Methods of SIGN-IN
+                      SizedBox(
+                        height: screenHeight * 0.3,
+                        child: Column(
+                          children: [
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                //FaceBook Auth
-                                InkWell(
-                                    onTap: () {
-                                      debugPrint("Facebook auth button Pressed");
-                                    },
-                                    child: Image.asset(
-                                        Assets.images.logosFacebook.path)),
-
-                                //Spacer
+                                //Line container
+                                CustomLineContainer(lineWidth: screenWidth  * 0.35,),// ScreenUtils.screenWidth(context),
+                                //Spacer in row
                                 SizedBox(
-                                  width: screenWidth * 0.1,
+                                  width: screenWidth * 0.02,
                                 ),
 
-                                //LinkedIn Auth
-                                InkWell(
-                                    onTap: () {
-                                      debugPrint("LinkedIn auth button Pressed");
-                                    },
-                                    child: Image.asset(
-                                        Assets.images.logosLinkedinIcon.path)),
-
-                                //Spacer
-                                SizedBox(
-                                  width: screenWidth * 0.1,
+                                //"Sign In with" Text widget
+                                Text(
+                                  AppStrings.signInWithText,
+                                  style: AppFontStyle.authSubTitleTextStyle
+                                      .copyWith(color: AppColors.kBlackColor),
                                 ),
 
-                                //Google Auth
-                                InkWell(
-                                    onTap: () {
-                                      debugPrint("Google auth button Pressed");
-                                    },
-                                    child: Image.asset(
-                                        Assets.images.grommetIconsGoogle.path)),
+                                //Spacer in row
+                                SizedBox(
+                                  width: screenWidth * 0.02,
+                                ),
+
+                                //Line container
+                                CustomLineContainer(lineWidth: screenWidth  * 0.35,),
                               ],
                             ),
-                          ),
-                        ],
+                            //Spacer
+                            SizedBox(
+                              height: screenHeight * 0.03,
+                            ),
+
+                            //Social authentication
+                            SizedBox(
+                              height: screenHeight * 0.1,
+                              width: screenWidth,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  //FaceBook Auth
+                                  InkWell(
+                                      onTap: () {
+                                        debugPrint("Facebook auth button Pressed");
+                                      },
+                                      child: Image.asset(
+                                          Assets.images.logosFacebook.path)),
+
+                                  //Spacer
+                                  SizedBox(
+                                    width: screenWidth * 0.1,
+                                  ),
+
+                                  //LinkedIn Auth
+                                  InkWell(
+                                      onTap: () {
+                                        debugPrint("LinkedIn auth button Pressed");
+                                      },
+                                      child: Image.asset(
+                                          Assets.images.logosLinkedinIcon.path)),
+
+                                  //Spacer
+                                  SizedBox(
+                                    width: screenWidth * 0.1,
+                                  ),
+
+                                  //Google Auth
+                                  InkWell(
+                                      onTap: () {
+                                        debugPrint("Google auth button Pressed");
+                                      },
+                                      child: Image.asset(
+                                          Assets.images.grommetIconsGoogle.path)),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

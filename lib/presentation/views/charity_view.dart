@@ -43,108 +43,111 @@ class CharityView extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = ScreenUtils.screenHeight(context);
     double screenWidth = ScreenUtils.screenWidth(context);
-    return Scaffold(
-      backgroundColor: AppColors.kGrey7D7C88Color,
-      resizeToAvoidBottomInset: false, // Prevents body from shifting
-      appBar: CustomAppBar(
-        appBarTitle: AppStrings.charityAppBarText,
-        leadingIconWidget: Image.asset("assets/images/arrow_back.png"),
-        screenHeight: screenHeight,
-        screenWidth: screenWidth,
-        actionAppBar: [
-          Padding(
-            padding: const EdgeInsets.only(right: 15.0),
-            child: InkWell(child: SvgPicture.asset(AppImagesURL.settingIcon, height: screenHeight * 0.03,)),
-          ),
-        ],
-      ),
-      body: Stack(
-        children: [
-          //top
-          ScaffoldBackGroundPainter.topBlurredShape(),
-          //bottom,
-          ScaffoldBackGroundPainter.bottomBlurredShape(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: AppColors.kGrey7D7C88Color,
+        resizeToAvoidBottomInset: false, // Prevents body from shifting
+        appBar: CustomAppBar(
+          appBarTitle: AppStrings.charityAppBarText,
+          leadingIconWidget: Image.asset("assets/images/arrow_back.png"),
+          screenHeight: screenHeight,
+          screenWidth: screenWidth,
+          actionAppBar: [
+            Padding(
+              padding: const EdgeInsets.only(right: 15.0),
+              child: InkWell(child: SvgPicture.asset(AppImagesURL.settingIcon, height: screenHeight * 0.03,)),
+            ),
+          ],
+        ),
+        body: Stack(
+          children: [
+            //top
+            ScaffoldBackGroundPainter.topBlurredShape(),
+            //bottom,
+            ScaffoldBackGroundPainter.bottomBlurredShape(),
 
-          //Home View body Content
-          SizedBox(
-            height: screenHeight * 0.83,
-            width: screenWidth,
-            //   color: Colors.greenAccent,
-            child: SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    vertical: screenHeight * 0.0,
-                    horizontal: screenWidth * 0.03),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.symmetric(
-                          vertical: screenHeight * 0.00,
-                          horizontal: screenWidth * 0.0),
-                      child: Text("Acts of Kindness",
-                        style: AppFontStyle.appTitleFontStyle,
+            //Home View body Content
+            SizedBox(
+              height: screenHeight * 0.83,
+              width: screenWidth,
+              //   color: Colors.greenAccent,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                      vertical: screenHeight * 0.0,
+                      horizontal: screenWidth * 0.03),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(
+                            vertical: screenHeight * 0.00,
+                            horizontal: screenWidth * 0.0),
+                        child: Text("Acts of Kindness",
+                          style: AppFontStyle.appTitleFontStyle,
 
+                        ),
                       ),
-                    ),
 
-                    //spacer
-                    SizedBox(
-                      height: screenHeight * 0.03,
-                    ),
+                      //spacer
+                      SizedBox(
+                        height: screenHeight * 0.03,
+                      ),
 
-                    //Dear Diary Button
-                    CustomCommonButton(
-                      onTap: (){
-                        Navigator.of(context).pushNamed(RoutesName.addHasanatView);
-                      },
-                        buttonTitle: "Add Hasanat",
-                        buttonHeight: screenHeight * 0.06,
-                        buttonWidth: screenWidth),
+                      //Dear Diary Button
+                      CustomCommonButton(
+                        onTap: (){
+                          Navigator.of(context).pushNamed(RoutesName.addHasanatView);
+                        },
+                          buttonTitle: "Add Hasanat",
+                          buttonHeight: screenHeight * 0.06,
+                          buttonWidth: screenWidth),
 
-                    //spacer
-                    SizedBox(
-                      height: screenHeight * 0.01,
-                    ),
-                    //
-                    Row(
-                      children: [
-                        Text("Sort date: ",),
-                        Text("Old -> New",style: TextStyle(
-                          fontWeight: FontWeight.bold
-                        ),),
-                      ],
-                    ),
-                    //First Card Widget
-                   Card(
-                     child:Column(
-                       children: [
-                         ReusableCharityColumn(textList: textList,dateList: dateList,index: 0,screenHeight: screenHeight,screenWidth:screenWidth     ),
-                         ReusableCharityColumn(textList: textList,dateList: dateList,index: 1,screenHeight: screenHeight,screenWidth:screenWidth     ),
-                         ReusableCharityColumn(textList: textList,dateList: dateList,index: 2,screenHeight: screenHeight,screenWidth:screenWidth     ),
-                         ReusableCharityColumn(textList: textList,dateList: dateList,index: 3,screenHeight: screenHeight,screenWidth:screenWidth     ),
-                         ReusableCharityColumn(textList: textList,dateList: dateList,index: 4,screenHeight: screenHeight,screenWidth:screenWidth     ),
-                         ReusableCharityColumn(textList: textList,dateList: dateList,index: 5,screenHeight: screenHeight,screenWidth:screenWidth     ),
-                         ReusableCharityColumn(textList: textList,dateList: dateList,index: 6,screenHeight: screenHeight,screenWidth:screenWidth     ),
+                      //spacer
+                      SizedBox(
+                        height: screenHeight * 0.01,
+                      ),
+                      //
+                      Row(
+                        children: [
+                          Text("Sort date: ",),
+                          Text("Old -> New",style: TextStyle(
+                            fontWeight: FontWeight.bold
+                          ),),
+                        ],
+                      ),
+                      //First Card Widget
+                     Card(
+                       child:Column(
+                         children: [
+                           ReusableCharityColumn(textList: textList,dateList: dateList,index: 0,screenHeight: screenHeight,screenWidth:screenWidth     ),
+                           ReusableCharityColumn(textList: textList,dateList: dateList,index: 1,screenHeight: screenHeight,screenWidth:screenWidth     ),
+                           ReusableCharityColumn(textList: textList,dateList: dateList,index: 2,screenHeight: screenHeight,screenWidth:screenWidth     ),
+                           ReusableCharityColumn(textList: textList,dateList: dateList,index: 3,screenHeight: screenHeight,screenWidth:screenWidth     ),
+                           ReusableCharityColumn(textList: textList,dateList: dateList,index: 4,screenHeight: screenHeight,screenWidth:screenWidth     ),
+                           ReusableCharityColumn(textList: textList,dateList: dateList,index: 5,screenHeight: screenHeight,screenWidth:screenWidth     ),
+                           ReusableCharityColumn(textList: textList,dateList: dateList,index: 6,screenHeight: screenHeight,screenWidth:screenWidth     ),
 
-                       ],
+                         ],
+                       ),
                      ),
-                   ),
-                    //Spacer
+                      //Spacer
 
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
-          ),
 
-          ///BOTTOM NAVIGATION BAR
-          BottomNavWidget(),
-        ],
+            ///BOTTOM NAVIGATION BAR
+            BottomNavWidget(),
+          ],
+        ),
+
+
       ),
-
-
     );
   }
 }

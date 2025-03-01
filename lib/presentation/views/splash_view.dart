@@ -24,29 +24,32 @@ class _SplashViewState extends State<SplashView> {
   //Navigation
   moveToNextScreen() {
     Future.delayed(const Duration(seconds: 2), () {
-    Navigator.of(context).pushNamedAndRemoveUntil(RoutesName.signInView,(route)=> false);
+    Navigator.of(context).pushNamedAndRemoveUntil(RoutesName.signInView,(route) => false);
       debugPrint("Moved to Sign-in View");
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: AppColors.kGrey7D7C88Color,
-      body: Stack(
-        children: [
-          // Top blurred shape
-           ScaffoldBackGroundPainter.topBlurredShape(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: AppColors.kGrey7D7C88Color,
+        body: Stack(
+          children: [
+            // Top blurred shape
+             ScaffoldBackGroundPainter.topBlurredShape(),
 
-          // Bottom blurred shape
-          ScaffoldBackGroundPainter.bottomBlurredShape(),
-          Center(
-            child: Text(
-              AppStrings.splashViewText,
-              style: AppFontStyle.largeTextStyle,
+            // Bottom blurred shape
+            ScaffoldBackGroundPainter.bottomBlurredShape(),
+            Center(
+              child: Text(
+                AppStrings.splashViewText,
+                style: AppFontStyle.largeTextStyle,
+              ),
             ),
-          ),
-      ],
+        ],
+        ),
       ),
     );
   }

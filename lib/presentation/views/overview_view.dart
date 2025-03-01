@@ -25,92 +25,95 @@ class _OverviewViewState extends State<OverviewView> {
   Widget build(BuildContext context) {
     double screenHeight = ScreenUtils.screenHeight(context);
     double screenWidth = ScreenUtils.screenWidth(context);
-    return Scaffold(
-      backgroundColor: AppColors.kGrey7D7C88Color,
-      appBar: CustomAppBar(
-          appBarTitle: '"Reflect Grow Worship.“',
-          leadingIconWidget: InkWell(
-               onTap: (){
-                 Navigator.of(context).pushNamed(RoutesName.homeView);
-               },
-              child: Image.asset(AppImagesURL.arrowBackImage)),
-          screenHeight: screenHeight,
-          screenWidth: screenWidth,
-          actionAppBar: [
-            Padding(
-              padding: const EdgeInsets.only(right: 15.0),
-              child: InkWell(child: SvgPicture.asset(AppImagesURL.settingIcon, height: screenHeight * 0.03,)),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: AppColors.kGrey7D7C88Color,
+        appBar: CustomAppBar(
+            appBarTitle: '"Reflect Grow Worship.“',
+            leadingIconWidget: InkWell(
+                 onTap: (){
+                   Navigator.of(context).pushNamed(RoutesName.homeView);
+                 },
+                child: Image.asset(AppImagesURL.arrowBackImage)),
+            screenHeight: screenHeight,
+            screenWidth: screenWidth,
+            actionAppBar: [
+              Padding(
+                padding: const EdgeInsets.only(right: 15.0),
+                child: InkWell(child: SvgPicture.asset(AppImagesURL.settingIcon, height: screenHeight * 0.03,)),
+              ),
+            ]),
+        body: Stack(
+          children: [
+            ScaffoldBackGroundPainter.topBlurredShape(),
+            ScaffoldBackGroundPainter.bottomBlurredShape(),
+            SingleChildScrollView(
+              child: SizedBox(
+                  height: screenHeight,
+                  width: screenWidth,
+                  //color: Colors.greenAccent,
+                  child: Column(
+                    children: [
+                      //Top TITLE
+                      topWidgetOverview(screenHeight, screenWidth),
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.02,
+                      ),
+                      Text("Go to Journal Date",
+                          style: AppFontStyle.robotoFontStyle
+                              .copyWith(color: AppColors.kBlack38)),
+                      //Spacer
+                      SizedBox(
+                        height: screenHeight * 0.02,
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        padding: EdgeInsets.all(12),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16),
+                          boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10)],
+                        ),
+                        child: TableCalendar(
+                          focusedDay: _selectedDate,
+                          firstDay: DateTime(2000),
+                          lastDay: DateTime(2100),
+                          calendarStyle: CalendarStyle(
+                            todayDecoration: BoxDecoration(
+                              color: Colors.redAccent,
+                              shape: BoxShape.circle,
+                            ),
+                            selectedDecoration: BoxDecoration(
+                              color: Colors.redAccent,
+                              shape: BoxShape.circle,
+                            ),
+                          ),
+                          headerStyle: HeaderStyle(
+                            formatButtonVisible: false,
+                            titleCentered: true,
+                            leftChevronIcon: Icon(Icons.chevron_left, color: Colors.black),
+                            rightChevronIcon: Icon(Icons.chevron_right, color: Colors.black),
+                          ),
+                          onDaySelected: (selectedDay, focusedDay) {
+                            setState(() {
+                              _selectedDate = selectedDay;
+                            });
+                          },
+                          selectedDayPredicate: (day) => isSameDay(day, _selectedDate),
+                        ),
+                      ),
+
+                     // Spacer(),
+
+                    ],
+                  )),
             ),
-          ]),
-      body: Stack(
-        children: [
-          ScaffoldBackGroundPainter.topBlurredShape(),
-          ScaffoldBackGroundPainter.bottomBlurredShape(),
-          SingleChildScrollView(
-            child: SizedBox(
-                height: screenHeight,
-                width: screenWidth,
-                //color: Colors.greenAccent,
-                child: Column(
-                  children: [
-                    //Top TITLE
-                    topWidgetOverview(screenHeight, screenWidth),
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.02,
-                    ),
-                    Text("Go to Journal Date",
-                        style: AppFontStyle.robotoFontStyle
-                            .copyWith(color: AppColors.kBlack38)),
-                    //Spacer
-                    SizedBox(
-                      height: screenHeight * 0.02,
-                    ),
-                    Container(
-                      margin: EdgeInsets.symmetric(horizontal: 20),
-                      padding: EdgeInsets.all(12),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(16),
-                        boxShadow: [BoxShadow(color: Colors.black26, blurRadius: 10)],
-                      ),
-                      child: TableCalendar(
-                        focusedDay: _selectedDate,
-                        firstDay: DateTime(2000),
-                        lastDay: DateTime(2100),
-                        calendarStyle: CalendarStyle(
-                          todayDecoration: BoxDecoration(
-                            color: Colors.redAccent,
-                            shape: BoxShape.circle,
-                          ),
-                          selectedDecoration: BoxDecoration(
-                            color: Colors.redAccent,
-                            shape: BoxShape.circle,
-                          ),
-                        ),
-                        headerStyle: HeaderStyle(
-                          formatButtonVisible: false,
-                          titleCentered: true,
-                          leftChevronIcon: Icon(Icons.chevron_left, color: Colors.black),
-                          rightChevronIcon: Icon(Icons.chevron_right, color: Colors.black),
-                        ),
-                        onDaySelected: (selectedDay, focusedDay) {
-                          setState(() {
-                            _selectedDate = selectedDay;
-                          });
-                        },
-                        selectedDayPredicate: (day) => isSameDay(day, _selectedDate),
-                      ),
-                    ),
-
-                   // Spacer(),
-
-                  ],
-                )),
-          ),
-          /// Bottom Navigation Bar
-          BottomNavWidget(),
-        ],
+            /// Bottom Navigation Bar
+            BottomNavWidget(),
+          ],
+        ),
       ),
     );
   }

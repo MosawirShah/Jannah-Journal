@@ -19,150 +19,153 @@ class AddHasanatView extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = ScreenUtils.screenHeight(context);
     double screenWidth = ScreenUtils.screenWidth(context);
-    return Scaffold(
-      backgroundColor: AppColors.kGrey7D7C88Color,
-      appBar: CustomAppBar(
-          appBarTitle: "",
-          leadingIconWidget: InkWell(
-            onTap: (){
-              Navigator.of(context).pushNamed(RoutesName.homeView);
-            },
-              child: Image.asset(AppImagesURL.arrowBackImage)),
-          screenHeight: screenHeight,
-          screenWidth: screenWidth,
-          actionAppBar: [
-            Padding(
-                padding: EdgeInsets.only(right: screenWidth * 0.05),
-                child: InkWell(
-                  onTap: (){
-                    Navigator.of(context).pushNamed(RoutesName.settingsView);
-                  },
-                  child: Text(
-                    "Cancel",
-                    style: AppFontStyle.fontStyleInterSmallSize,
-                  ),
-                )),
-          ]),
-      body: Stack(
-        children: [
-          //top
-          ScaffoldBackGroundPainter.topBlurredShape(),
-          //bottom,
-          ScaffoldBackGroundPainter.bottomBlurredShape(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: AppColors.kGrey7D7C88Color,
+        appBar: CustomAppBar(
+            appBarTitle: "",
+            leadingIconWidget: InkWell(
+              onTap: (){
+                Navigator.of(context).pushNamed(RoutesName.homeView);
+              },
+                child: Image.asset(AppImagesURL.arrowBackImage)),
+            screenHeight: screenHeight,
+            screenWidth: screenWidth,
+            actionAppBar: [
+              Padding(
+                  padding: EdgeInsets.only(right: screenWidth * 0.05),
+                  child: InkWell(
+                    onTap: (){
+                      Navigator.of(context).pushNamed(RoutesName.settingsView);
+                    },
+                    child: Text(
+                      "Cancel",
+                      style: AppFontStyle.fontStyleInterSmallSize,
+                    ),
+                  )),
+            ]),
+        body: Stack(
+          children: [
+            //top
+            ScaffoldBackGroundPainter.topBlurredShape(),
+            //bottom,
+            ScaffoldBackGroundPainter.bottomBlurredShape(),
 
-          //Home View body Content
-          SizedBox(
-            height: screenHeight * 0.83,
-            width: screenWidth,
-            //   color: Colors.greenAccent,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: screenHeight * 0.00,
-                        horizontal: screenWidth * 0.0),
-                    child: Text("New Hasanat",
-                        style: AppFontStyle.appTitleFontStyle),
-                  ),
+            //Home View body Content
+            SizedBox(
+              height: screenHeight * 0.83,
+              width: screenWidth,
+              //   color: Colors.greenAccent,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: screenHeight * 0.00,
+                          horizontal: screenWidth * 0.0),
+                      child: Text("New Hasanat",
+                          style: AppFontStyle.appTitleFontStyle),
+                    ),
 
-                  //spacer
-                  SizedBox(
-                    height: screenHeight * 0.0015,
-                  ),
+                    //spacer
+                    SizedBox(
+                      height: screenHeight * 0.0015,
+                    ),
 
-                  //subtitle
-                  Text(
-                    "February 24, 2025",
-                    style: AppFontStyle.fontStyleInterSmallSize,
-                  ),
-                  //spacer
-                  SizedBox(
-                    height: screenHeight * 0.025,
-                  ),
+                    //subtitle
+                    Text(
+                      "February 24, 2025",
+                      style: AppFontStyle.fontStyleInterSmallSize,
+                    ),
+                    //spacer
+                    SizedBox(
+                      height: screenHeight * 0.025,
+                    ),
 
-                  //First Card Widget
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: screenWidth * 0.04, right: screenWidth * 0.04),
-                    child: Card(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                            horizontal: screenWidth * 0.00,
-                            vertical: screenHeight * 0.00),
-                        child: Column(
-                          children: [
-                            //Spacer
-                            SizedBox(
-                              height: screenHeight * 0.02,
-                            ),
-                            //Title
-                            Text(
-                              "Title",
-                              style: AppFontStyle.appTitleFontStyle
-                                  .copyWith(fontSize: 23),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: screenHeight * 0.002,
-                                  left: screenWidth * 0.08,
-                                  right: screenWidth * 0.08),
-                              child: TextField(
-                                decoration: DearDiaryTextFieldDecoration
-                                    .getTextFieldDecoration(),
+                    //First Card Widget
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: screenWidth * 0.04, right: screenWidth * 0.04),
+                      child: Card(
+                        child: Padding(
+                          padding: EdgeInsets.symmetric(
+                              horizontal: screenWidth * 0.00,
+                              vertical: screenHeight * 0.00),
+                          child: Column(
+                            children: [
+                              //Spacer
+                              SizedBox(
+                                height: screenHeight * 0.02,
                               ),
-                            ),
-                            //Spacer
-                            SizedBox(
-                              height: screenHeight * 0.02,
-                            ),
-                            Text(
-                              "My Story",
-                              style: AppFontStyle.appTitleFontStyle
-                                  .copyWith(fontSize: 23),
-                            ),
-                            Padding(
-                              padding: EdgeInsets.only(
-                                  top: screenHeight * 0.002,
-                                  left: screenWidth * 0.08,
-                                  right: screenWidth * 0.08),
-                              child: TextField(
-                                  maxLines: 8,
+                              //Title
+                              Text(
+                                "Title",
+                                style: AppFontStyle.appTitleFontStyle
+                                    .copyWith(fontSize: 23),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: screenHeight * 0.002,
+                                    left: screenWidth * 0.08,
+                                    right: screenWidth * 0.08),
+                                child: TextField(
                                   decoration: DearDiaryTextFieldDecoration
-                                      .getTextFieldDecoration()),
-                            ),
-                            //Spacer
-                            SizedBox(
-                              height: screenHeight * 0.03,
-                            ),
-                            SizedBox(
-                              height: screenHeight * 0.03,
-                            ),
-                            CustomCommonButton(
-                                buttonTitle: "Save the memory",
-                                onTap: (){
-                                  Navigator.of(context).pushNamed(RoutesName.addHasanatView);
-                                },
-                                buttonHeight:
-                                ScreenUtils.screenHeight(context) * 0.055,
-                                buttonWidth: screenWidth * 0.7),
-                            SizedBox(
-                              height: screenHeight * 0.03,
-                            ),
-                          ],
+                                      .getTextFieldDecoration(),
+                                ),
+                              ),
+                              //Spacer
+                              SizedBox(
+                                height: screenHeight * 0.02,
+                              ),
+                              Text(
+                                "My Story",
+                                style: AppFontStyle.appTitleFontStyle
+                                    .copyWith(fontSize: 23),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(
+                                    top: screenHeight * 0.002,
+                                    left: screenWidth * 0.08,
+                                    right: screenWidth * 0.08),
+                                child: TextField(
+                                    maxLines: 8,
+                                    decoration: DearDiaryTextFieldDecoration
+                                        .getTextFieldDecoration()),
+                              ),
+                              //Spacer
+                              SizedBox(
+                                height: screenHeight * 0.03,
+                              ),
+                              SizedBox(
+                                height: screenHeight * 0.03,
+                              ),
+                              CustomCommonButton(
+                                  buttonTitle: "Save the memory",
+                                  onTap: (){
+                                    Navigator.of(context).pushNamed(RoutesName.addHasanatView);
+                                  },
+                                  buttonHeight:
+                                  ScreenUtils.screenHeight(context) * 0.055,
+                                  buttonWidth: screenWidth * 0.7),
+                              SizedBox(
+                                height: screenHeight * 0.03,
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-          ///B0ttom Navigation Bar
-          BottomNavWidget(),
-        ],
+            ///B0ttom Navigation Bar
+            BottomNavWidget(),
+          ],
+        ),
       ),
     );
   }

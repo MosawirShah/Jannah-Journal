@@ -32,140 +32,143 @@ class DuaView extends StatelessWidget {
   Widget build(BuildContext context) {
     double screenHeight = ScreenUtils.screenHeight(context);
     double screenWidth = ScreenUtils.screenWidth(context);
-    return Scaffold(
-      backgroundColor: AppColors.kGrey7D7C88Color,
-      appBar: CustomAppBar(
-          appBarTitle: '"Pray. Trust. Receive."',
-          leadingIconWidget: InkWell(
-            onTap: (){
-              Navigator.of(context).pushNamed(RoutesName.homeView);
-            },
-              child: Image.asset(AppImagesURL.arrowBackImage)),
-          screenHeight: screenHeight,
-          screenWidth: screenWidth,
-          actionAppBar: [
-            Padding(
-      padding:  EdgeInsets.only(right: screenWidth * 0.05),
-      child: SvgPicture.asset('assets/icons/setting_icon.svg',height: screenHeight * 0.03,),
-            ),
-          ]),
-      body: Stack(
-        children: [
-          //top
-          ScaffoldBackGroundPainter.topBlurredShape(),
-          //bottom,
-          ScaffoldBackGroundPainter.bottomBlurredShape(),
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: Scaffold(
+        backgroundColor: AppColors.kGrey7D7C88Color,
+        appBar: CustomAppBar(
+            appBarTitle: '"Pray. Trust. Receive."',
+            leadingIconWidget: InkWell(
+              onTap: (){
+                Navigator.of(context).pushNamed(RoutesName.homeView);
+              },
+                child: Image.asset(AppImagesURL.arrowBackImage)),
+            screenHeight: screenHeight,
+            screenWidth: screenWidth,
+            actionAppBar: [
+              Padding(
+        padding:  EdgeInsets.only(right: screenWidth * 0.05),
+        child: SvgPicture.asset('assets/icons/setting_icon.svg',height: screenHeight * 0.03,),
+              ),
+            ]),
+        body: Stack(
+          children: [
+            //top
+            ScaffoldBackGroundPainter.topBlurredShape(),
+            //bottom,
+            ScaffoldBackGroundPainter.bottomBlurredShape(),
 
-          //Home View body Content
-          SizedBox(
-            height: screenHeight,
-            width: screenWidth,
-            //   color: Colors.greenAccent,
-            child: SingleChildScrollView(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(
-                        vertical: screenHeight * 0.04,
-                        horizontal: screenWidth * 0.0),
-                    child: Text("Your Personal Du’a Collection",
-                        style: AppFontStyle.appTitleFontStyle
-                            .copyWith(fontSize: 26)),
-                  ),
+            //Home View body Content
+            SizedBox(
+              height: screenHeight,
+              width: screenWidth,
+              //   color: Colors.greenAccent,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.symmetric(
+                          vertical: screenHeight * 0.04,
+                          horizontal: screenWidth * 0.0),
+                      child: Text("Your Personal Du’a Collection",
+                          style: AppFontStyle.appTitleFontStyle
+                              .copyWith(fontSize: 26)),
+                    ),
 
-                  //spacer
-                  SizedBox(
-                    height: screenHeight * 0.0,
-                  ),
+                    //spacer
+                    SizedBox(
+                      height: screenHeight * 0.0,
+                    ),
 
-                  //TODO: Card Widget
-                  Padding(
-                    padding: EdgeInsets.only(
-                        left: screenWidth * 0.033, right: screenWidth * 0.033),
-                    child: Card(
-                      child: Column(
-                        children: [
-                          //spacer
-                          SizedBox(height: screenHeight * 0.015,),
-                          Text("1. Du’a for Healing & Good Health",style: AppFontStyle.duaFontStyle.copyWith(fontWeight: FontWeight.bold)),
-                          //spacer
-                          SizedBox(height: screenHeight * 0.015,),
-                          Text(
-                            "اللهم اشفني شفاءً لا يغادر سقماً، وعافني في بدني وروحي.",style: AppFontStyle.duaFontStyle.copyWith(
+                    //TODO: Card Widget
+                    Padding(
+                      padding: EdgeInsets.only(
+                          left: screenWidth * 0.033, right: screenWidth * 0.033),
+                      child: Card(
+                        child: Column(
+                          children: [
+                            //spacer
+                            SizedBox(height: screenHeight * 0.015,),
+                            Text("1. Du’a for Healing & Good Health",style: AppFontStyle.duaFontStyle.copyWith(fontWeight: FontWeight.bold)),
+                            //spacer
+                            SizedBox(height: screenHeight * 0.015,),
+                            Text(
+                              "اللهم اشفني شفاءً لا يغادر سقماً، وعافني في بدني وروحي.",style: AppFontStyle.duaFontStyle.copyWith(
 
-                          ),),
-                          //spacer
-                          SizedBox(height: screenHeight * 0.01,),
-                          Padding(
-                            padding: EdgeInsets.only(left: screenWidth * 0.05,right: screenWidth * 0.05),
-                            child: Text(duaInEnglish1,textAlign: TextAlign.center,style: AppFontStyle.duaFontStyle.copyWith(
-                                fontStyle: FontStyle.italic,color: AppColors.kBlack38
                             ),),
-                          ),
-                          //spacer
-                          SizedBox(height: screenHeight * 0.02,),
-                          //Separation line
-                          CustomLineContainer(
-                            lineWidth: screenWidth * 0.74,
-                          ),
-                          //spacer
-                          SizedBox(height: screenHeight * 0.015,),
-                          Text("2. Du’a for Healing & Good Health",style: AppFontStyle.duaFontStyle.copyWith(fontWeight: FontWeight.bold)),
-                          //spacer
-                          SizedBox(height: screenHeight * 0.015,),
-                          Text(
-                            ".اللهم اكفني بحلالك عن حرامك، وأغنني بفضلك عمن سواك",style: AppFontStyle.duaFontStyle.copyWith(
+                            //spacer
+                            SizedBox(height: screenHeight * 0.01,),
+                            Padding(
+                              padding: EdgeInsets.only(left: screenWidth * 0.05,right: screenWidth * 0.05),
+                              child: Text(duaInEnglish1,textAlign: TextAlign.center,style: AppFontStyle.duaFontStyle.copyWith(
+                                  fontStyle: FontStyle.italic,color: AppColors.kBlack38
+                              ),),
+                            ),
+                            //spacer
+                            SizedBox(height: screenHeight * 0.02,),
+                            //Separation line
+                            CustomLineContainer(
+                              lineWidth: screenWidth * 0.74,
+                            ),
+                            //spacer
+                            SizedBox(height: screenHeight * 0.015,),
+                            Text("2. Du’a for Healing & Good Health",style: AppFontStyle.duaFontStyle.copyWith(fontWeight: FontWeight.bold)),
+                            //spacer
+                            SizedBox(height: screenHeight * 0.015,),
+                            Text(
+                              ".اللهم اكفني بحلالك عن حرامك، وأغنني بفضلك عمن سواك",style: AppFontStyle.duaFontStyle.copyWith(
 
-                          ),),
-                          //spacer
-                          SizedBox(height: screenHeight * 0.01,),
-                          Padding(
-                            padding: EdgeInsets.only(left: screenWidth * 0.05,right: screenWidth * 0.05),
-                            child: Text(duaInEnglish2,textAlign: TextAlign.center,style: AppFontStyle.duaFontStyle.copyWith(
-                                fontStyle: FontStyle.italic,color: AppColors.kBlack38
                             ),),
-                          ),
-                          //spacer
-                          SizedBox(height: screenHeight * 0.01,),
-                          //Separation line
-                          CustomLineContainer(
-                            lineWidth: screenWidth * 0.74,
-                          ),
+                            //spacer
+                            SizedBox(height: screenHeight * 0.01,),
+                            Padding(
+                              padding: EdgeInsets.only(left: screenWidth * 0.05,right: screenWidth * 0.05),
+                              child: Text(duaInEnglish2,textAlign: TextAlign.center,style: AppFontStyle.duaFontStyle.copyWith(
+                                  fontStyle: FontStyle.italic,color: AppColors.kBlack38
+                              ),),
+                            ),
+                            //spacer
+                            SizedBox(height: screenHeight * 0.01,),
+                            //Separation line
+                            CustomLineContainer(
+                              lineWidth: screenWidth * 0.74,
+                            ),
 
 
-                          //Spacer
-                          SizedBox(
-                            height: screenHeight * 0.01,
-                          ),
-                          SizedBox(
-                              width: screenWidth * 0.9,
-                              child: Center(
-                                  child: Text(
-                                "More...",
-                                style: AppFontStyle.prayerTrackerFontStyle
-                                    .copyWith(
-                                        color: AppColors.kGrey909090Color,
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w100),
-                              ))),
-                          //Spacer
-                          SizedBox(
-                            height: screenHeight * 0.012,
-                          ),
-                        ],
+                            //Spacer
+                            SizedBox(
+                              height: screenHeight * 0.01,
+                            ),
+                            SizedBox(
+                                width: screenWidth * 0.9,
+                                child: Center(
+                                    child: Text(
+                                  "More...",
+                                  style: AppFontStyle.prayerTrackerFontStyle
+                                      .copyWith(
+                                          color: AppColors.kGrey909090Color,
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.w100),
+                                ))),
+                            //Spacer
+                            SizedBox(
+                              height: screenHeight * 0.012,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
 
-          ///Bottom Nav Bar
-          BottomNavWidget(),
-        ],
+            ///Bottom Nav Bar
+            BottomNavWidget(),
+          ],
+        ),
       ),
     );
   }
