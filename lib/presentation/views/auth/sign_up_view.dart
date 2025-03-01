@@ -221,7 +221,10 @@ class SignUpView extends StatelessWidget {
                       titleText: AppStrings.signUpButtonText,
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
-                          debugPrint("Sign up");
+                          debugPrint("Sign in");
+                          Navigator.of(context).pushNamed(RoutesName.homeView);
+                          _emailController.clear();
+                          _passwordController.clear();
                         }
                       },
                     ),

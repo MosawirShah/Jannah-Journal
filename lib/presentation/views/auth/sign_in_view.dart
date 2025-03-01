@@ -130,18 +130,22 @@ class SignInView extends StatelessWidget {
                     ),
 
                     //Forgot password
-                    Container(
-                      margin: EdgeInsets.only(left: screenWidth * 0.6),
-                      child: TextButton(
-                          onPressed: () {
-                            debugPrint("Forgot password button Pressed");
-                          },
-                          child: Text(
-                            AppStrings.forgotPasswordText,
-                            style: AppFontStyle.authSubTitleTextStyle.copyWith(
-                                color: AppColors.kBrownD87234Color,
-                                fontWeight: FontWeight.bold),
-                          )),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: Container(
+                        margin: EdgeInsets.only(right: 0.0),
+                        child: TextButton(
+                            onPressed: () {
+                              debugPrint("Forgot password button Pressed");
+                            },
+                            child: Text(
+                              AppStrings.forgotPasswordText,
+                              textAlign: TextAlign.right,
+                              style: AppFontStyle.authSubTitleTextStyle.copyWith(
+                                  color: AppColors.kBrownD87234Color,
+                                  fontWeight: FontWeight.bold,),
+                            )),
+                      ),
                     ),
 
                     //Spacer
@@ -191,7 +195,7 @@ class SignInView extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               //Line container
-                              CustomLineContainer(),
+                              CustomLineContainer(lineWidth: screenWidth  * 0.35,),// ScreenUtils.screenWidth(context),
                               //Spacer in row
                               SizedBox(
                                 width: screenWidth * 0.02,
@@ -210,7 +214,7 @@ class SignInView extends StatelessWidget {
                               ),
 
                               //Line container
-                              CustomLineContainer(),
+                              CustomLineContainer(lineWidth: screenWidth  * 0.35,),
                             ],
                           ),
                           //Spacer

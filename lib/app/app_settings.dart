@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:jannah_journal/core/theme/app_theme.dart';
 import '../core/routes/app_routes.dart';
 import '../core/routes/routes_name.dart';
 
@@ -10,8 +11,8 @@ class AppSettings extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       //initialRoute: ,
-      //theme: AppTheme.appLightTheme,
-      initialRoute: RoutesName.homeView,
+      theme: AppTheme.appThemeData(),
+      initialRoute: RoutesName.splashView,
       routes: AppRoutes.appRoutes(context),
     );
   }

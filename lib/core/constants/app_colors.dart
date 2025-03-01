@@ -11,6 +11,9 @@ class AppColors{
 
   //Full Black Color
   static const kBlackColor = Color(0xFF000000);
+  static const kBlack26 = Colors.black26;
+  static const kBlack38 =  Colors.black38;
+
 
   //Full White Color
   static const kWhiteColor = Color(0xFFFFFFFF);
@@ -27,6 +30,17 @@ class AppColors{
 
  //home subtitle font color
  static const kGrey909090Color = Color(0xFF909090);
+
+ //textfield border color
+ static const kWhiteF5F5F5Color = Color(0xFFF5F5F5);
+
+ static const kBlack202020Color = Color(0xFF202020);
+
+ static const kGreyADADADColor = Color(0xFFADADAD);
+
+ static const kGrey2F2F2FColor = Color(0xFF2F2F2F);
+
+
 
 
 }

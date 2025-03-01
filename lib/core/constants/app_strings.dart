@@ -18,4 +18,18 @@ class AppStrings {
 
   //Home view Text
   static const String homeCustomButtonText = "Dear Diary";
+
+  ///App bar text
+
+  //home app bar text
+  static const String homeAppBarText = 'Today';
+  //prayer tracker app bar text
+  static const String prayerTrackerAppBarText = '"Come to success“';
+  //overview app bar text
+  static const String overviewAppBarText = '"Reflect. Grow. Worship."';
+ //charity app bar text
+  static const String charityAppBarText = '"Give. Grow. Heal."';
+  //dua app bar text
+  static const String duaAppBarText = '"Pray. Trust. Receive."';
+
 }

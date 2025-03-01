@@ -24,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
   //Navigation
   moveToNextScreen() {
     Future.delayed(const Duration(seconds: 2), () {
-    Navigator.of(context).pushNamed(RoutesName.signInView);
+    Navigator.of(context).pushNamedAndRemoveUntil(RoutesName.signInView,(route)=> false);
       debugPrint("Moved to Sign-in View");
     });
   }

@@ -23,6 +23,31 @@ class AppFontStyle {
     color: AppColors.kWhiteColor,fontWeight: FontWeight.bold,fontSize: 20,
   );
 
+  //small text style
   static TextStyle fontStyleInterSmallSize = GoogleFonts.inter(fontSize: 16,fontWeight: FontWeight.bold
   );
+
+  //title text style
+ static TextStyle appTitleFontStyle =  GoogleFonts.inter(fontSize: 32,fontWeight: FontWeight.bold
+  );
+
+  //prayertracker text
+  static TextStyle prayerTrackerFontStyle =  GoogleFonts.inter(fontSize: 20,fontWeight: FontWeight.w500
+  );
+
+  //
+static TextStyle robotoFontStyle = GoogleFonts.roboto(
+  color: AppColors.kBlack26,
+  fontSize: 19
+);
+
+static TextStyle rubikFontStyle = GoogleFonts.rubik(
+  fontSize: 18,
+  fontWeight: FontWeight.w400,
+  color: AppColors.kWhiteColor
+);
+
+  static TextStyle duaFontStyle =  GoogleFonts.inter(fontSize: 17,color: AppColors.kBlackColor
+  );
+
 }

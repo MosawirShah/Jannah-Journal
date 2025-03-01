@@ -20,17 +20,17 @@ class $AssetsImagesGen {
   AssetGenImage get duaImage =>
       const AssetGenImage('assets/images/dua_image.png');
 
-  /// File path: assets/images/grommet-icons_google.png
+  /// File path: assets/images/google_image.png
   AssetGenImage get grommetIconsGoogle =>
-      const AssetGenImage('assets/images/grommet-icons_google.png');
+      const AssetGenImage('assets/images/google_image.png');
 
-  /// File path: assets/images/logos_facebook.png
+  /// File path: assets/images/facebook_image.png
   AssetGenImage get logosFacebook =>
-      const AssetGenImage('assets/images/logos_facebook.png');
+      const AssetGenImage('assets/images/facebook_image.png');
 
-  /// File path: assets/images/logos_linkedin-icon.png
+  /// File path: assets/images/linkedin_image.png
   AssetGenImage get logosLinkedinIcon =>
-      const AssetGenImage('assets/images/logos_linkedin-icon.png');
+      const AssetGenImage('assets/images/linkedin_image.png');
 
   /// File path: assets/images/overview_image.png
   AssetGenImage get overviewImage =>
